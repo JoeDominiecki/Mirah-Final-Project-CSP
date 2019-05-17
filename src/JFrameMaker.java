@@ -3,10 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class JFrameMaker {
-
+    static int pointsToAdd = 0;
     static JFrame f = new JFrame("Finding Agent Mirah");
 
-    public JFrameMaker(String[] s) {
+    public JFrameMaker() {
+
+    }
+
+    public int returnMethod(String[] s, int[] numPoints){
 
         Dimension SCREENSIZE = Toolkit.getDefaultToolkit().getScreenSize();
         int SCREENWIDTH = SCREENSIZE.width;
@@ -18,7 +22,7 @@ public class JFrameMaker {
         button1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-
+                 pointsToAdd+=numPoints[1];
             }
         });
         JButton button2 = new JButton(s[2]);
@@ -26,7 +30,7 @@ public class JFrameMaker {
         button2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-
+                pointsToAdd+=numPoints[2];
             }
         });
         JButton button3 = new JButton(s[3]);
@@ -34,7 +38,7 @@ public class JFrameMaker {
         button3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-
+                pointsToAdd+=numPoints[3];
             }
         });
         JButton quitButton = new JButton("Quit");
@@ -42,7 +46,8 @@ public class JFrameMaker {
         quitButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
-
+                f.setEnabled(false);
+                return;
             }
         });
         JLabel question = new JLabel(s[0],SwingConstants.CENTER);
@@ -64,11 +69,14 @@ public class JFrameMaker {
         f.setLocation((SCREENWIDTH/2)-f.getWidth()/2, (SCREENHEIGHT/2)-f.getHeight()/2);
         f.setVisible(true);
 
-    }
+        while(pointsToAdd==0){
 
-    public void returnNumber(int answerNumber){
+        }
         f.setEnabled(false);
+        f.setVisible(false);
+        return pointsToAdd;
 
     }
+
 
 }
