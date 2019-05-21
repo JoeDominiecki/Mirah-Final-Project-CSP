@@ -57,7 +57,12 @@ public class JFrameMaker extends JFrame implements ActionListener {
         this.setVisible(true);
 
         while(x==0){
-            System.out.println("ignore this");
+            try{
+                Thread.sleep(100);
+            }catch(Exception e){
+                System.exit(0);
+            }
+
         }
     }
 
